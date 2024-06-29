@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
+    <style>
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- <div style="  display: flex; font-size: 50px; font-family: boldcom; padding: 30px;">
+        <div style="width: 100%; margin-left: 50px;  text-align: left; overflow: scroll; font-size: 80px;">{{DES}}</div>
+    </div>   -->
+    <div style="  display: flex; font-size: 40px; font-family: regularcom; padding: 30px;">
+        <div style="width: 100%; margin-left: 50px;  text-align: left; overflow: scroll; font-size: 70px;">Hi, <span style="font-family: boldcom; font-size: 80px;">{{NAME}}</span>...!</div>
+    </div>  
+    <br>
+    <br>
+    <br>
+    <div style="  display: flex; font-size: 50px; font-family: lightcom; padding: 30px; margin-bottom: -15px;">
+        <div style="width: 100%; margin-left: 50px;  text-align: left; overflow: scroll; font-size: 40px;">att_pro Id: {{ID}}</div>
+    </div>  
+    
+    <center>
+        
+        <div style="width: 90%; background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; margin-top: -2px; ">
+            <br>
+            <br>
+            <br>
+            <div onclick="window.location.href = '/edit';" style="width: 70%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; border-radius: 10px;">
+                <div style="width: 100%; height: 60px; text-align: center; overflow: scroll;">Update Profile</div>
+            </div>
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+            
+            <div onclick="window.location.href = '/about';" style="width: 70%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; border-radius: 10px;">
+                <div style="width: 100%; height: 60px; text-align: center; overflow: scroll;">About</div>
+            </div>
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+
+            <div onclick="window.location.href = '/developer';" style="width: 70%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; border-radius: 10px;">
+                <div style="width: 100%; height: 60px; text-align: center; overflow: scroll;">Developers</div>
+            </div>
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+            
+            <div onclick=" {{ SERVERCODE }}" style="width: 70%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; border-radius: 10px;">
+                <div style="width: 100%; height: 60px; text-align: center; overflow: scroll;">Server Code</div>
+            </div>
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+
+            <div onclick="logout()" style="width: 70%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; border-radius: 10px;">
+                <div style="width: 100%; height: 60px; text-align: center; overflow: scroll;">Log Out</div>
+            </div>
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+            <br>  
+ 
+               
+            </div>
+        </div>
+        
+        
+        
+    </center>
+
+    <div class="navbar">
+        
+        <button onclick="home()" style="margin-left: 50px"><img src="static/home_w.png" width="80px" height="80px" style="opacity: 0.5;"/> </button>
+        <button onclick="progress()"><img src="static/progress_w.png" width="80px" height="80px" style="opacity: 0.5;"/> </button>
+        <button onclick="prnt()"><img src="static/notice_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+        <button onclick="profile()" style="margin-right: 50px"><img src="static/profile_w.png" width="80px" height="80px" /></button>
+        
+    </div>
+    <script>
+        function home(){
+            location.replace(" {{ DASH }}");
+        }
+        function progress() {
+            location.replace("{{ PROGRESS }}");
+        }
+        function prnt() {
+            location.replace("{{ PRINT }}");
+        }
+        function profile() {
+            location.replace("/profile");
+        }
+        function logout() {
+            function clearCookie(cookieName) {
+                document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+            clearCookie("user_id");
+            location.replace("/");
+        }
+    </script>
+    
+
+</body>
+
+</html>

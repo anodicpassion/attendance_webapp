@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <style>
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+        #div1, #div2 {
+            /* ... other styles ... */
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1" style="position:absolute; z-index: -1; width: 100%; height: 500px; background: linear-gradient(to top right, #3498db, #8e44ad); margin-top: -140px; margin-left: -8px; border-radius: 0px 0px 60px 60px">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="font-family: boldcom; font-size: 100px; color: #ffffff; padding-bottom: 10px; padding-left: 50px;">AttPro</p>
+    </div>
+    <div id="div2" style="opacity: 0; position:fixed; width: 100%; height: 300px; background: linear-gradient(to top right, #3498db, #8e44ad); margin-top: -140px; margin-left: -8px; border-radius: 0px 0px 60px 60px">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="font-family: boldcom; font-size: 100px; color: #ffffff; padding-bottom: 10px; padding-left: 50px;">AttPro</p>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        
+        <p style="font-family: mediumcom; font-size: 70px; color: #d7eeff; padding-bottom: 10px;">Overall Attendance</p>
+        <p style="font-family: lightcom; font-size: 60px; color: #05263d;">Semester 2</p>
+        <br>
+        <canvas id="radialBarChart" width="550" height="550"></canvas>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="display: flex; width: 100%;">
+            
+            <div style="width: 33%; padding: 10px; align-items: center; text-align: center;">
+                <center>
+
+                    <div style="padding:5px; border: 0px solid #05263d; width: 80%; border-radius: 20px; background-color: #fff; box-shadow: 0 3px 6px rgba(95, 94, 94, 0.16), 0 3px 6px rgba(95, 94, 94, 0.16);">
+                        <p id="lecture" style="overflow-x: scroll; margin-top: 20px;font-size: 90px; font-family: boldcom; color:#3498db">0</p>
+                        <p style="font-family: lightcom; font-size: 30px; margin-top: -50px;">Lectures</p>
+                    </div>
+                </center>
+            </div>
+            <div style="width: 33%; padding: 10px; align-items: center; text-align: center;">
+                <center>
+
+                    <div style="padding:5px; border: 0px solid #05263d; width: 80%; border-radius: 20px; background-color: #fff; box-shadow: 0 3px 6px rgba(95, 94, 94, 0.16), 0 3px 6px rgba(95, 94, 94, 0.16);">
+                        <p id="practical" style="overflow-x: scroll; margin-top: 20px;font-size: 90px; font-family: boldcom; color:#3498db">0</p>
+                        <p style="font-family: lightcom; font-size: 30px; margin-top: -50px;">Practicals</p>
+                    </div>
+                </center>
+            </div>
+            <div style="width: 33%; padding: 10px; align-items: center; text-align: center;">
+                <center>
+
+                    <div style="padding:5px; border: 0px solid #05263d; width: 80%; border-radius: 20px; background-color: #fff; box-shadow: 0 3px 6px rgba(95, 94, 94, 0.16), 0 3px 6px rgba(95, 94, 94, 0.16);">
+                        <p id="total" style="overflow-x: scroll; margin-top: 20px;font-size: 90px; font-family: boldcom; color:#3498db">0</p>
+                        <p style="font-family: lightcom; font-size: 30px; margin-top: -50px;">Total</p>
+                    </div>
+                </center>
+            </div>
+        </div>
+        
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; width: 100%;">
+        <div style="width: 33%; padding-left: 20px; align-items: center; text-align: center;">
+            <div style="font-size:100px; color:#fff; padding:20px; border: 0px solid #05263d; width: 200px; height:200px; border-radius: 50%; background-color: #045082; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+                <p id="l_missed" style="margin-top: 50px;">0</p>
+            </div>
+        </div>
+        <div style="width: 13%; padding-top: 120px; align-items: center; text-align: center;">
+            <div style="width: 100%; border-bottom: 3px #fff solid; border-radius: 5px;"></div>
+        </div>
+        <div style="width: 53%; padding-right: 10px; align-items: center; text-align: center;">
+            <div style="padding-top:50px; border: 0px solid #05263d; width: 100%;overflow: scroll; min-height:100px; border-radius: 5px;">
+                <p style="font-family: mediumcom; font-size: 50px; color: #05263d; padding-bottom: 10px;">Lectures %</p>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; width: 100%;">
+        <div style="width: 33%; padding-left: 20px; align-items: center; text-align: center;">
+            <div style="font-size:100px; color:#fff; padding:20px; border: 0px solid #05263d; width: 200px; height:200px; border-radius: 50%; background-color: #033252; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+               <p id="p_missed" style="margin-top: 50px;">0</p>
+            </div>
+        </div>
+        <div style="width: 13%; padding-top: 120px; align-items: center; text-align: center;">
+            <div style="width: 100%; border-bottom: 3px #fff solid; border-radius: 5px;"></div>
+        </div>
+        <div style="width: 53%; padding-right: 10px; align-items: center; text-align: center;">
+            <div style="padding-top:50px; border: 0px solid #05263d; width: 100%;overflow: scroll; min-height:100px; border-radius: 5px;">
+                <p style="font-family: mediumcom; font-size: 50px; color: #05263d; padding-bottom: 10px;">Practicals %</p>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; width: 100%;">
+        <div style="width: 33%; padding-left: 20px; align-items: center; text-align: center;">
+            <div style="font-size:100px; color:#fff; padding:20px; border: 0px solid #05263d; width: 200px; height:200px; border-radius: 50%; background-color: #045082; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+               <p id="t_missed" style="margin-top: 50px;">0</p>
+            </div>
+        </div>
+        <div style="width: 13%; padding-top: 120px; align-items: center; text-align: center;">
+            <div style="width: 100%; border-bottom: 3px #fff solid; border-radius: 5px;"></div>
+        </div>
+        <div style="width: 53%; padding-right: 10px; align-items: center; text-align: center;">
+            <div style="padding-top:50px; border: 0px solid #05263d; width: 100%;overflow: scroll; min-height:100px; border-radius: 5px;">
+                <p style="font-family: mediumcom; font-size: 50px; color: #05263d; padding-bottom: 10px;">Total Missed</p>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <br>
+    <div class="navbar">
+        <button onclick="home()" style="margin-left: 50px"><img src="static/home_w.png" width="80px" height="80px" /> </button>
+        <button onclick="progress()"><img src="static/progress_w.png" width="80px" height="80px" style="opacity: 0.5;"/> </button>
+        <button ><img src="static/notice_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+        <button onclick="profile()" style="margin-right: 50px"><img src="static/profile_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function home(){
+            location.replace("/");
+        }
+        function progress() {
+            location.replace("/progress");
+        }
+        
+        function profile() {
+            location.replace("/profile");
+        }
+        function drawRadialBarChart(percentage) {
+            const canvas = document.getElementById('radialBarChart');
+            const context = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 250;
+            const barThickness = 30;
+
+            // Clear the canvas
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Create linear gradient
+            const gradient = context.createLinearGradient(centerX - radius, centerY, centerX + radius, centerY);
+            gradient.addColorStop(0, '#3498db'); // Deep blue
+            gradient.addColorStop(1, '#8e44ad'); // Vibrant purple
+
+            // Draw the background circle
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            context.lineWidth = barThickness;
+            context.strokeStyle = '#f2f1f1';
+            context.stroke();
+
+            // Draw the radial bar with linear gradient
+            context.beginPath();
+            context.arc(centerX, centerY, radius, -Math.PI / 2, (2 * Math.PI * percentage / 100) - Math.PI / 2);
+            context.lineWidth = barThickness;
+            context.lineCap = 'round';
+            context.strokeStyle = gradient;
+            context.stroke();
+
+            // Display percentage in the center
+            context.fillStyle = '#033252'; // Text color
+            context.font = 'bold 200px boldcom';
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText(`${percentage}`, centerX, centerY-10);
+
+            context.fillStyle = '#3498db'; // Text color
+            context.font = ' 50px lightcom';
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText(`percent`, centerX, centerY+120);
+        }
+
+        function infiniteLoop() {
+            let i = 0;
+            let direction = 1; // 1 for increasing, -1 for decreasing
+
+            function loop() {
+                console.log(i);
+
+                // Check the direction and update the loop variable
+                i += direction;
+                drawRadialBarChart(i);
+                // If i reaches either end, change the direction
+                if (i === 100 || i === 0) {
+                    direction *= -1;
+                }
+
+                // Call the loop function again
+                requestAnimationFrame(loop);
+            }
+
+            // Start the loop
+            loop();
+        }
+
+        // Call the function to start the infinite loop
+        // infiniteLoop();
+        
+        // var p_data, n_data;
+
+        // function check_updates() {
+            
+
+        //     fetch('/get_percentage')
+        //         .then(response => {
+        //             if (!response.ok) {
+        //                 throw new Error(`HTTP error! Status: ${response.status}`);
+        //             }
+        //             return response.json();
+        //         })
+        //         .then(data => {
+        //             // Handle the received integer
+                   
+        //             if (data.per !== p_data.per) {
+
+
+        //                 if (data.per < p_data.per){
+        //                     function countWithDelay(currentCount) {
+        //                         console.log(currentCount);
+        //                         drawRadialBarChart(currentCount);
+
+        //                         // Check if we have reached the target integer
+        //                         if (currentCount < targetInteger) {
+        //                             // Schedule the next count with a delay of 500 milliseconds (adjust as needed)
+        //                             setTimeout(function() {
+        //                                 countWithDelay(currentCount + 1);
+        //                             }, 10);
+        //                         }
+        //                     }
+                            
+        //                 }
+        //                 else if (data.per > p_data.per){
+                            
+        //                 }
+
+        //                 document.getElementById("l_missed").innerText = data.l_t_cnt;
+        //                 document.getElementById("p_missed").innerText = data.p_t_cnt;
+        //                 document.getElementById("t_missed").innerText = data.t_l;
+        //                 document.getElementById("total").innerText = data.t_cnt;
+        //                 document.getElementById("practical").innerText = data.tp_cnt;
+        //                 document.getElementById("lecture").innerText = data.tl_cnt;
+        //                 p_data = data;
+        //             }
+                    
+                   
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error.message);
+                    
+        //         });
+
+
+        //     setTimeout(check_updates, 3000);
+        // }
+
+
+
+        function fetchIntegerFromFlask() {
+            // Make a GET request to the Flask endpoint
+            
+            fetch('/get_percentage')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle the received integer
+                    
+                    countGradually(data.per);
+                    document.getElementById("l_missed").innerText = data.l_t_cnt;
+                    document.getElementById("p_missed").innerText = data.p_t_cnt;
+                    document.getElementById("t_missed").innerText = data.t_l;
+                    document.getElementById("total").innerText = data.t_cnt;
+                    document.getElementById("practical").innerText = data.tp_cnt;
+                    document.getElementById("lecture").innerText = data.tl_cnt;
+                    // p_data = data;
+                    // check_updates(p_data);
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    
+                });
+
+            function countGradually(targetInteger) {
+                // Ensure the input is a positive integer
+                if (Number.isInteger(targetInteger) && targetInteger >= 0) {
+                    // Define a function to execute the counting with a delay
+                    function countWithDelay(currentCount) {
+                        console.log(currentCount);
+                        drawRadialBarChart(currentCount);
+
+                        // Check if we have reached the target integer
+                        if (currentCount < targetInteger) {
+                            // Schedule the next count with a delay of 500 milliseconds (adjust as needed)
+                            setTimeout(function() {
+                                countWithDelay(currentCount + 1);
+                            }, 10);
+                        }
+                    }
+
+                    // Start counting from 0
+                    countWithDelay(0);
+                } else {
+                    console.error('Please provide a valid positive integer as input.');
+                }
+            }
+            
+
+        // Example: Call the function with an input of 5
+        
+        }
+
+        // Call the function to fetch the integer from Flask
+        fetchIntegerFromFlask();
+        
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll > 100) {
+                    $('#div1').css('opacity', '0');
+                    $('#div2').css('opacity', '1');
+                } else {
+                    $('#div1').css('opacity', '1');
+                    $('#div2').css('opacity', '0');
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
+

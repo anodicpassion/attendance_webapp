@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <style>
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+            
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <div style="z-index: 2; position: fixed; width: 100%; height: 140px; background-color: #dadada; margin-top: -20px; margin-left: -8px; border-bottom: 3px solid #a9a8a8;">
+        <div onclick="location.replace('/print')" style="position: fixed; z-index: 2; color: #3498db; font-family: lightcom; font-size: 100px; margin-top: 25px; margin-left: 20px; text-shadow: 0 3px 6px rgba(117, 117, 117, 0.05), 0 3px 6px rgba(169, 169, 169, 0.1); "> &lt; </div>
+        <center>
+            <p style="font-family: lightcom; font-size: 40px; color: #05263d; padding-top: 20px; padding-bottom: 10px;">Archive</p>
+        </center>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p style="font-family: boldcom; font-size: 80px; color: #05263d; padding-left: 5%; padding-bottom: 10px; position: absolute;">Reports</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%; height: 70vh; background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            <br>
+                <br>
+            <div id="cnt" style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; text-align: center; align-items: center;">
+            </div>  
+            <br>
+            <br>
+            <div id="xyz1" style="width: 90%; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; display: flex; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                <div style="width: 20%; text-align: left;">Sr. No.</div>
+                <div style="width: 80%; text-align: center;">File Name</div>
+                <!-- <div style="width: 20%; text-align: right; padding-right: 10px;">Get</div> -->
+            </div>
+            <div id="abc" style="width: 100%;">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+        
+
+        
+        
+        
+    </center>
+
+
+    
+    
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function home() {
+            location.replace("/");
+        }
+        function profile() {
+            location.replace("/profile");
+        }
+        document.addEventListener('touchstart', function(event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        }, { passive: false });
+        function create_names(roll, ind) {
+            // Create the main container div
+            var brk = document.createElement("br");
+            var mainContainer = document.createElement("div");
+            mainContainer.id = "xyz" + ind;
+            mainContainer.style.width = "90%";
+            mainContainer.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            mainContainer.style.display = "flex";
+            mainContainer.style.fontSize = "50px";
+            mainContainer.style.fontFamily = "mediumcom";
+            mainContainer.style.padding = "30px";
+
+            // Create the first child div
+            var child1 = document.createElement("div");
+            child1.style.width = "90%";
+            child1.style.textAlign = "left";
+            child1.innerText = roll;
+            child1.style.overflowX = "scroll";
+            child1.style.overflowY = "auto";
+            var child3 = document.createElement("div");
+            child3.style.width = "10%";
+            child3.style.textAlign = "left";
+            child3.innerText = ind;
+            
+
+            // Create the second child div
+            var child2 = document.createElement("div");
+            child2.style.width = "10%";
+            child2.style.textAlign = "center";
+            child2.style.fontFamily = "boldcom";
+            child2.style.fontSize = "50px";
+            child2.innerText = "⤓";
+
+            // Create the third child div with an input checkbox
+            
+            
+            
+            // Append the created elements to the main container
+            
+            mainContainer.appendChild(child3);
+            mainContainer.appendChild(child1);
+            // mainContainer.appendChild(child2);
+
+            // Append the main container to the div with id "abc"
+            var parentDiv = document.getElementById("abc");
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(mainContainer);
+
+            
+           
+
+            mainContainer.addEventListener('click', function() {
+                // window.open(window.location.href.replace(/print$/, '') + '/get/' + roll);
+                window.location.href = window.location.href.replace(/print$/, '') + '/get/' + roll;
+                // downloadCSV(roll);
+            });
+        };
+
+      
+        function downloadCSV(name) {
+            // Make a GET request to the Flask server to fetch the CSV file
+            let url = "/docs/get/" + name
+            fetch(url, {
+                method: 'GET',
+            })
+            .then(response => {
+                // Check if response is successful
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob(); // Get the response as a Blob
+            })
+            .then(blob => {
+                // Create a link element to trigger the download
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', `{{name}}.csv`); // Set the filename
+                document.body.appendChild(link);
+                link.click();
+                link.parentNode.removeChild(link); // Clean up
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        }
+
+        function getCheckedIndices() {
+            var checkboxes = document.querySelectorAll('#abc input[type="checkbox"]');
+            var checkedIndices = [];
+
+            checkboxes.forEach(function(checkbox, index) {
+                if (checkbox.checked) {
+                    checkedIndices.push(index);
+                }
+            });
+
+            document.getElementById("totalcnt").innerText = JSON.stringify(checkedIndices.length);
+    
+            
+        }
+
+        
+
+        function printMatchingElements(array1, array2) {
+            // Check if both arrays have the same length
+            
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                create_names(array1[i], i+1);
+                document.getElementById('cnt').innerText = "Records found: " + JSON.stringify(i+1) ;
+
+            }
+        }
+
+        // Example usage
+        const array1 = {{ FILE | tojson | safe }};
+        
+
+        printMatchingElements(array1);
+
+        
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll > 50) {
+                    $('#div1').css('opacity', '0');
+                    $('#div2').css('opacity', '1');
+                    $('#y_cls').css('color', '#05263d');
+                } else {
+                    $('#div1').css('opacity', '1');
+                    $('#div2').css('opacity', '0');
+                    $('#y_cls').css('color', '#d7eeff');
+                }
+            });
+        });
+        
+    </script>
+    
+</html>

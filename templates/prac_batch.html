@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="user-scalable=no">
+<head>
+    <style>
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('/static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('/static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('/static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('/static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('/static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('/static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('/static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('/static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          margin-top: 20px;
+        }
+    
+        th, td {
+          border: 1px solid #ddd;
+          padding: 10px;
+          text-align: left;
+        }
+        td {
+            padding-left: 20px;
+        }
+        th {
+          background-color: #ce3737;
+        }
+      </style>
+</head>
+
+<body>
+    <div style="z-index: 2; position: fixed; width: 100%; height: 140px; background-color: #dadada; margin-top: -20px; margin-left: -8px; border-bottom: 3px solid #a9a8a8;">
+        <div onclick="location.replace('/')" style="position: fixed; z-index: 2; color: #3498db; font-family: lightcom; font-size: 100px; margin-top: 25px; margin-left: 20px; text-shadow: 0 3px 6px rgba(117, 117, 117, 0.05), 0 3px 6px rgba(169, 169, 169, 0.1); "> &lt; </div>
+        <center>
+            <p style="font-family: lightcom; font-size: 40px; color: #05263d; padding-top: 20px; padding-bottom: 10px;">{{ SUBJECT }}</p>
+        </center>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p style="font-family: boldcom; font-size: 80px; color: #05263d; padding-left: 5%; padding-bottom: 10px; position: absolute;">{{ BATCH }}</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%; height: 70vh; background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            <br>
+            <p style="font-size: 50px; font-family: boldcom;">Select batch</p>
+            
+            <div id="abc" style="width: 100%;">
+
+            </div>
+            <br>
+            <br>
+            <!-- <div id="attc" style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px; overflow: scroll;">
+            </div>   -->
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+       
+        
+
+        
+        
+        
+    </center>
+
+   
+
+    <!-- <div class="navbar">
+        <button onclick="home()" style="margin-left: 50px"><img src="/static/home_w.png" width="80px" height="80px" /> </button>
+        <button onclick=""><img src="/static/progress_w.png" width="80px" height="80px" /> </button>
+        <button onclick=""><img src="/static/notice_w.png" width="80px" height="80px" /></button>
+        <button onclick="profile()" style="margin-right: 50px"><img src="/static/profile_w.png" width="80px" height="80px" /></button>
+    </div> -->
+
+    <script>
+        function home() {
+            location.replace("/");
+        }
+        function profile() {
+            location.replace("/profile");
+        }
+
+        function createDiv(name, cc) {
+            // Create the new div element
+            var newDiv = document.createElement("div");
+            var brk = document.createElement("br");
+            // Set the attributes and styles for the new div
+            newDiv.onclick = function() {
+                att(cc);
+            };
+            newDiv.style.width = "90%";
+            newDiv.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            newDiv.style.display = "flex";
+            newDiv.style.fontSize = "50px";
+            newDiv.style.fontFamily = "mediumcom";
+            newDiv.style.padding = "30px";
+            newDiv.innerText = name; // Set the text content
+
+            // Get the element with id "abc"
+            var parentDiv = document.getElementById("abc");
+
+            // Append the new div to the parent div
+            parentDiv.appendChild(newDiv);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+
+        }
+
+        function att(param1) {
+            location.replace("{{ POSTL }}"+param1);
+        }
+
+        const array2 = {{ CLASSCODE | tojson | safe }};
+        const array1 = {{ NAME | tojson | safe }};
+        console.log(array1, array2);
+        function printMatchingElements(array1, array2) {
+            // Check if both arrays have the same length
+            if (array1.length !== array2.length) {
+                console.error('Arrays must have the same length');
+                return;
+            }
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                console.log(`Index ${i}: ${array1[i]} - ${array2[i]}`);
+                createDiv(array2[i], array1[i]);
+
+            }
+        }
+        printMatchingElements(array2, array1);
+
+
+    </script>
+    
+    
+
+</body>
+
+</html>

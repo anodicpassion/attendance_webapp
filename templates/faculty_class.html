@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <style>
+        
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+            
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+            
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+</head>
+
+<body>
+   <center>
+        
+        <p style="font-family: mediumcom; font-size: 80px; color: #05263d; padding-bottom: 10px;">Batches</p>
+        
+        
+        <p style="font-family: lightcom; font-size: 60px; color: #05263d; padding-left: 5%; padding-bottom: 10px; position: absolute;">Attendance</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%; height: 60vh; background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            <br>
+            <br>
+            <div id="abcd" style="width: 100%;"></div>
+        </div>
+
+        
+        
+        
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+   
+    <div class="navbar">
+        <button onclick="home()" style="margin-left: 50px"><img src="static/home_w.png" width="80px" height="80px" style="opacity: 0.5;" /> </button>
+        <button onclick="progress()"><img src="static/progress_w.png" width="80px" height="80px" /> </button>
+        <button onclick="prnt()"><img src="static/notice_w.png" width="80px" height="80px" style="opacity: 0.5;" /></button>
+        <button onclick="profile()" style="margin-right: 50px"><img src="static/profile_w.png" width="80px" height="80px" style="opacity: 0.5;" /></button>
+    </div>
+    <script>
+        function home() {
+            location.replace("/");
+        }
+        function profile() {
+            location.replace("/profile");
+        }
+        function progress() {
+            location.replace("/hd_cls");
+        }
+        function prnt() {
+            location.replace("/print");
+        }
+        function toggleVisibility() {
+            var div = document.getElementById('new_class');
+
+            // Toggle the visibility
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+            }
+        }
+        
+        // JavaScript code to prevent zooming
+        document.addEventListener('touchstart', function(event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        }, { passive: false });
+
+        function att() {
+            location.replace("/att");
+        }
+
+        function makeAjaxRequest() {
+            // Get values from input fields
+            var year = document.getElementById('n_year').value;
+            var subject = document.getElementById('n_subject').value;
+
+            // Create a data object to send in the AJAX request
+            var data = {
+                year: year,
+                subject: subject
+            };
+
+            // Make an AJAX request using the Fetch API
+            fetch('/add_class', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Assuming the server returns JSON
+                } else {
+                    throw new Error('Request failed');
+                }
+            })
+            .then(data => {
+                // Handle success data here
+                var copyText = "Join the batch " + JSON.stringify(year) + " for the subject " + JSON.stringify(subject) + " using class-code: " + JSON.stringify(data.class_code);
+                navigator.clipboard.writeText(copyText);
+                alert(`Class has been created and class-code(${data.class_code}) has been copied to your clipboard.`);
+                console.log('Success data:', data);
+                setTimeout(function() {
+                    location.reload();
+                    }, 1000);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', data);
+                alert("error:"+error);
+                setTimeout(function() {
+                    location.reload();
+                    }, 1000);
+            });
+        }
+
+        function createDiv(name, cc) {
+            
+            var n_div = document.createElement("div");
+            var brk_1 = document.createElement("br");
+            // Set the attributes and styles for the new div
+            n_div.onclick = function() {
+                fet(cc);
+            };
+            n_div.style.width = "90%";
+            n_div.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            n_div.style.display = "flex";
+            n_div.style.fontSize = "50px";
+            n_div.style.fontFamily = "mediumcom";
+            n_div.style.padding = "30px";
+            n_div.innerText = name; // Set the text content
+
+            // Get the element with id "abc"
+            var p_div = document.getElementById("abcd");
+
+            // Append the new div to the parent div
+            p_div.appendChild(n_div);
+            p_div.appendChild(brk_1);
+            p_div.appendChild(brk_1);
+
+
+        }
+
+        // Example function for the onclick event with parameters
+        function att(param1) {
+            location.replace("/att/"+param1);
+        }
+        function fet(param1) {
+            // alert("Generating report. Please wait.")
+            const url = `/report/${param1}`;  // Replace with your server address
+
+            // fetch(url)
+            // .then(response => response.blob())
+            // .then(blob => {
+            //     const a = document.createElement('a');
+            //     const url = window.URL.createObjectURL(blob);
+            //     a.href = url;
+            //     a.download = 'downloaded_file.png';  // Change the file name accordingly
+            //     document.body.appendChild(a);
+            //     a.click();
+            //     window.URL.revokeObjectURL(url);
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            // });
+
+            window.location.href = url;
+            
+        }
+        const array2 = {{ CLASSCODE | tojson | safe }};
+        const array1 = {{ NAME | tojson | safe }};
+        console.log(array1, array2);
+        function printMatchingElements(array1, array2) {
+            // Check if both arrays have the same length
+            if (array1.length !== array2.length) {
+                console.error('Arrays must have the same length');
+                return;
+            }
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                console.log(`Index ${i}: ${array1[i]} - ${array2[i]}`);
+                createDiv(array2[i], array1[i], i);
+
+            }
+        }
+        printMatchingElements(array1, array2);
+
+        
+        
+      </script>
+</body>
+</html>

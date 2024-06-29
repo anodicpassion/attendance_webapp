@@ -1,0 +1,12 @@
+cls_code,year,subject,faculty,student,ttl
+BSTX,TE,WT,[1_],[2_],0
+RGCL,SE Comp,Shubzz,[],[],0
+GSPV,TE Comp,Shubham Sakhare,[],[2_2_],0
+
+
+
+uid_2:dict={}
+prac_code:dict={}
+class_code:dict={}
+uid:dict={'0': ['Shrikant Damdhere', '0', '0', '1234'], '1': ['Jaishree', '0', '1', '12345'], '2': ['Pratik', '49', '2', '123456'], '3': ['Shubham Sakhare', '57', '2', '1111'], '4': ['Vishnu Nair', '36', '2', '1122'], 'hello': 0}
+prac_date:dict={}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <style>
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <center>
+        <p style="font-family: mediumcom; font-size: 80px; color: #05263d; padding-bottom: 10px;">Class You Enrolled IN</p>
+        <p style="font-family: lightcom; font-size: 60px; color: #05263d; padding-left: 5%; padding-bottom: 10px; position: absolute;">Your Classes</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%;background-color: #fff; height: 60vh; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            
+            <div id="new_class" style="display: none;">
+            <br>
+            <br>
+                <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding: 30px;">
+                    <div style="width: 90%; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                        <div style="width: 100%; height: 60px; overflow: scroll;">Class-Code</div>
+                        <input id="n_subject" type="text" name="Subject"  style="font-size: 50px; border: 1px solid #b4b4b4;"/>
+                    </div> 
+                    <br>
+                    <br>
+                    <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); background-color: #3498db; border-radius: 10px; font-size: 50px; color: #fff; font-family: regularcom; padding: 20px;" onclick="makeAjaxRequest()">Join</div>
+                </div>
+                
+            </div>
+
+            <br>
+            <br>
+            <div id="abc" style="width: 100%;">
+            </div>
+        </div>
+
+        <div style="width: 100px; height: 100px; margin-top: -50px; border-radius: 50%; background-color: #3498db; position: absolute; margin-left: 3%; font-size: 100px; color: #fff;" onclick="toggleVisibility()">+</div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="font-family: lightcom; font-size: 60px; color: #05263d; padding-left: 5%; padding-bottom: 10px; position: absolute;">Your Practicals</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%;background-color: #fff; height: 800px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            
+            <div id="new_batch" style="display: none;">
+            <br>
+            <br>
+                <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding: 30px;">
+                    <div style="width: 90%; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                        <div style="width: 100%; height: 60px; overflow: scroll;">Practical-Code</div>
+                        <input id="n_practical" type="text" name="Subject"  style="font-size: 50px; border: 1px solid #b4b4b4;"/>
+                    </div> 
+                    <br>
+                    <br>
+                    <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); background-color: #3498db; border-radius: 10px; font-size: 50px; color: #fff; font-family: regularcom; padding: 20px;" onclick="makeAjaxRequest2()">Join</div>
+                </div>
+                
+            </div>
+
+            <br>
+            <br>
+            <div id="lmn" style="width: 100%;">
+            </div>
+        </div>
+
+        <div style="width: 100px; height: 100px; margin-top: -50px; border-radius: 50%; background-color: #3498db; position: absolute; margin-left: 3%; font-size: 100px; color: #fff;" onclick="toggleVisibility2()">+</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        
+    </center>
+
+   
+
+    <div class="navbar">
+        <button onclick="home()" style="margin-left: 50px"><img src="static/home_w.png" width="80px" height="80px" style="opacity: 0.5;"/> </button>
+        <button onclick="progress()"><img src="static/progress_w.png" width="80px" height="80px" /> </button>
+        <button><img src="static/notice_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+        <button onclick="profile()" style="margin-right: 50px"><img src="static/profile_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+    </div>
+    <script>
+        function profile() {
+            location.replace("/profile");
+        }
+        function home() {
+            location.replace("/");
+        }
+        function progress() {
+            location.replace("/progress");
+        }
+
+        function toggleVisibility() {
+            var div = document.getElementById('new_class');
+
+            // Toggle the visibility
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+            }
+        }
+        function toggleVisibility2() {
+            var div = document.getElementById('new_batch');
+
+            // Toggle the visibility
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+            }
+        }
+        
+        // JavaScript code to prevent zooming
+        document.addEventListener('touchstart', function(event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        }, { passive: false });
+
+        function att() {
+            location.replace("/att");
+        }
+
+        function makeAjaxRequest() {
+            // Get values from input fields
+           
+            var subject = document.getElementById('n_subject').value;
+
+            // Create a data object to send in the AJAX request
+            var data = {
+                
+                subject: subject
+            };
+
+            // Make an AJAX request using the Fetch API
+            fetch('/add_subject', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Assuming the server returns JSON
+                } else {
+                    throw new Error('Request failed');
+                }
+            })
+            .then(data => {
+                var div = document.getElementById('new_class');
+                div.style.display = 'none';
+                // alert("Class Joinde");
+                location.reload();
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', data);
+                alert("Error in joining class. Please check the class-code.");
+            });
+        }
+
+        function makeAjaxRequest2() {
+            // Get values from input fields
+           
+            var subject = document.getElementById('n_practical').value;
+
+            // Create a data object to send in the AJAX request
+            var data = {
+                
+                subject: subject
+            };
+
+            // Make an AJAX request using the Fetch API
+            fetch('/add_batch', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Assuming the server returns JSON
+                } else {
+                    throw new Error('Request failed');
+                }
+            })
+            .then(data => {
+                var div = document.getElementById('new_class');
+                div.style.display = 'none';
+                // alert("Class Joinde");
+                location.reload();
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', data);
+                alert("Error in joining practical batch. Please check the practical-code.");
+            });
+        }
+
+        function createDiv(name, cc) {
+            // Create the new div element
+            var newDiv = document.createElement("div");
+            var brk = document.createElement("br");
+            // Set the attributes and styles for the new div
+            newDiv.onclick = function() {
+                att(cc);
+            };
+            newDiv.style.width = "90%";
+            newDiv.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            newDiv.style.display = "flex";
+            newDiv.style.fontSize = "50px";
+            newDiv.style.fontFamily = "mediumcom";
+            newDiv.style.padding = "30px";
+            newDiv.innerText = name; // Set the text content
+
+            // Get the element with id "abc"
+            var parentDiv = document.getElementById("abc");
+
+            // Append the new div to the parent div
+            parentDiv.appendChild(newDiv);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+        }
+
+        // Example function for the onclick event with parameters
+        function att(param1) {
+            alert(`Currently your attendance data for class_code ${param1} is under processing.`)
+        }
+
+        function createDiv2(name, cc) {
+            // Create the new div element
+            var newDiv = document.createElement("div");
+            var brk = document.createElement("br");
+            // Set the attributes and styles for the new div
+            newDiv.onclick = function() {
+                att2(cc);
+            };
+            newDiv.style.width = "90%";
+            newDiv.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            newDiv.style.display = "flex";
+            newDiv.style.fontSize = "50px";
+            newDiv.style.fontFamily = "mediumcom";
+            newDiv.style.padding = "30px";
+            newDiv.innerText = name; // Set the text content
+
+            // Get the element with id "abc"
+            var parentDiv = document.getElementById("lmn");
+
+            // Append the new div to the parent div
+            parentDiv.appendChild(newDiv);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+        }
+
+        // Example function for the onclick event with parameters
+        function att2(param1) {
+            alert(`Currently your attendance data for class_code ${param1} is under processing.`)
+        }
+
+        const array1 = {{ CLASSCODE | tojson | safe }};
+        const array2 = {{ NAME | tojson | safe }};
+
+        function printMatchingElements(array1, array2) {
+            // Check if both arrays have the same length
+            if (array1.length !== array2.length) {
+                console.error('Arrays must have the same length');
+                return;
+            }
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                console.log(`Index ${i}: ${array1[i]} - ${array2[i]}`);
+                createDiv(array2[i], array1[i], i);
+
+            }
+        }
+        printMatchingElements(array1, array2);
+
+        const array3 = {{ PRACODE | tojson | safe }};
+        const array4 = {{ PRANAME | tojson | safe }};
+
+        function printMatchingElements2(array1, array2) {
+            // Check if both arrays have the same length
+            if (array1.length !== array2.length) {
+                console.error('Arrays must have the same length');
+                return;
+            }
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                console.log(`Index ${i}: ${array1[i]} - ${array2[i]}`);
+                createDiv2(array2[i], array1[i], i);
+
+            }
+        }
+        printMatchingElements2(array3, array4);
+        
+      </script>
+</body>
+</html>

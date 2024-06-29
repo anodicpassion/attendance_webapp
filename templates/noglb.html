@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <style>
+
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+   
+    <center>
+        <div style="width: 90%; height: 70vh; background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="logo">
+                <svg width="240" height="192" viewBox="0 0 120 96" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_5510_497)"><path d="M118.275 87.9562L7.27647 0.958312C6.45147 0.313687 5.47272 0 4.50522 0C3.17022 0 1.84459 0.592125 0.959779 1.72294C-0.575284 3.68062 -0.234596 6.51 1.72253 8.04187L112.554 94.8731C114.523 96.4112 117.348 96.0596 118.871 94.1085C120.581 92.325 120.225 89.4937 118.275 87.9562Z" opacity="0.5" fill="#3498db"/><path opacity="0.4" d="M36 53.8313C32.6869 53.8313 30 56.5163 30 59.6625V89.4937C30 92.8069 32.6869 95.4937 36 95.4937C39.3131 95.4937 42 92.8069 42 89.4937V59.6625C42 56.6813 39.3187 53.8313 36 53.8313ZM54 90C54 93.3131 56.6869 96 60 96C63.3131 96 66 93.3131 66 90V69.8625L54 60.4575V90ZM12 71.8313C8.68687 71.8313 6 74.5163 6 77.6625V89.4937C6 92.8069 8.68687 95.4937 12 95.4937C15.3131 95.4937 18 92.8069 18 89.4937V77.6625C18 74.6813 15.3131 71.8313 12 71.8313ZM60 36C57.9937 36 56.325 37.0313 55.2375 38.55L66 46.9875V42C66 38.6812 63.3187 36 60 36ZM107.831 0C104.518 0 101.831 2.68687 101.831 6V75.2063L113.831 84.6113V6C113.831 2.68687 111.319 0 107.831 0ZM78 90C78 93.3131 80.6869 96 84 96C87.3131 96 90 93.3131 90 90V88.6684L78 79.2634V90ZM84 18C80.6869 18 78 20.6869 78 24V56.3813L90 65.7862V24C90 20.6812 87.3187 18 84 18Z" fill="gray"/></g><defs><clipPath id="clip0_5510_497"><rect width="120" height="96" fill="black"/></clipPath></defs></svg>
+            </div>
+            <br>
+            <p style="font-family: 'Courier New', Courier, monospace; font-size: 50px; margin-bottom: 0px;">Cannot connect to</p>
+            <p style="font-family:  'Courier New', Courier, bold; font-size: 80px; margin-top: 10px;">Globe</p>
+            <div onclick="logout()" style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                <!-- <div style="width: 100%; height: 60px; text-align: center; overflow: scroll;">Update Profile</div> -->
+                <button style="width: 100%;font-family: 'Courier New', Courier, monospace; font-size: 50px; border: none; background-color: transparent;" id="retryButton" type="button" onclick="gonative.webview.reload()">Retry</button>
+            </div>
+           
+        </div>
+        
+        
+        
+    </center>
+
+    <div class="navbar">
+        <button style="margin-left: 50px"><img src="static/home_w.png" width="80px" height="80px" /> </button>
+        <button><img src="static/progress_w.png" width="80px" height="80px" /> </button>
+        <button><img src="static/notice_w.png" width="80px" height="80px" /></button>
+        <button style="margin-right: 50px"><img src="static/profile_w.png" width="80px" height="80px" /></button>
+    </div>
+    
+    
+
+</body>
+
+</html>

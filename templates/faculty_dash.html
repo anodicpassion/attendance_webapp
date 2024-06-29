@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <style>
+        
+        @font-face {
+        font-family: 'thinrobo';
+        src: url('static/RobotoMono-Thin.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldrobo';
+        src: url('static/RobotoMono-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumrobo';
+        src: url('static/RobotoMono-Regular.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'boldcom';
+        src: url('static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'lightcom';
+        src: url('static/Comfortaa-Light.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'mediumcom';
+        src: url('static/Comfortaa-Medium.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'regularcom';
+        src: url('static/Comfortaa-Regular.ttf') format('truetype');
+        }
+        input.largerCheckbox {
+            width: 40px;
+            height: 40px;
+        }
+
+        body {
+            -webkit-user-select: none; /* Disable text selection for Webkit browsers (e.g., Chrome, Safari) */
+            -moz-user-select: none; /* Disable text selection for Mozilla browsers (e.g., Firefox) */
+            -ms-user-select: none; /* Disable text selection for Microsoft browsers (e.g., Edge) */
+            user-select: none; 
+            font-family: boldcom;
+            background-color: #e9e9e9;
+            padding-bottom: 50px; /* Adjust as needed to prevent the navbar from overlapping content */
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            border-top: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar button  {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1" style="position:absolute; z-index: -1; width: 100%; height: 700px; background: linear-gradient(to top right, #3498db, #8e44ad); margin-top: -140px; margin-left: -8px; border-radius: 40px;">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="font-family: boldcom; font-size: 100px; color: #ffffff; padding-bottom: 10px; padding-left: 50px;">AttPro</p>
+    </div>
+    <div id="div2" style="opacity: 0; position:fixed; z-index: 2; width: 100%; height: 300px; background: linear-gradient(to top right, #3498db, #8e44ad); margin-top: -140px; margin-left: -8px; border-radius: 40px;">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="font-family: boldcom; font-size: 100px; color: #ffffff; padding-bottom: 10px; padding-left: 50px;">AttPro</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <center>
+        <p id="y_cls" style="font-family: lightcom; font-size: 60px; color: #d7eeff; padding-left: 5%; padding-bottom: 10px; position: absolute;">Classes</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%;background-color: #fff; height: 60vh; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            
+            <div id="new_class" style="display: none;">
+            <br>
+            <br>
+                <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding: 30px;">
+                    <div style="width: 90%; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                        <div style="width: 100%; height: 60px; overflow: scroll;">Class-Code</div>
+                        <input id="n_subject" type="text" name="Subject"  style="font-size: 50px; border: 1px solid #b4b4b4;"/>
+                    </div> 
+                    <br>
+                    <br>
+                    <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); background-color: #3498db; border-radius: 10px; font-size: 50px; color: #fff; font-family: regularcom; padding: 20px;" onclick="makeAjaxRequest()">Join</div>
+                </div>
+                
+            </div>
+
+            
+            <!-- <div onclick="att()" style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); display: flex; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                TE COMP Web Technology
+            </div>  -->
+            <br>
+            <br>
+            <div id="abc" style="width: 100%;">
+            </div>           
+            <br>
+            <br>
+            
+        </div>
+        <div style="width: 100px; height: 100px; margin-top: -50px; border-radius: 50%; background-color: #3498db; position: absolute; margin-left: 3%; font-size: 100px; color: #fff;" onclick="toggleVisibility()">+</div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="font-family: lightcom; font-size: 60px; color: #05263d; padding-left: 5%; padding-bottom: 10px; position: absolute;">Practicals</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="width: 90%; height: 800px; background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); border-radius: 20px; overflow: auto;">
+            <div id="new_practical" style="display: none;">
+                <br>
+                <br>
+                    <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding: 30px;">
+                        <div style="width: 90%; font-size: 50px; font-family: mediumcom; padding: 30px;">
+                            <div style="width: 100%; height: 60px; overflow: scroll;">Batch-Code</div>
+                            <input id="n_practical" type="text" name="Subject"  style="font-size: 50px; border: 1px solid #b4b4b4;"/>
+                        </div> 
+                        <br>
+                        <br>
+                        <div style="width: 90%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); background-color: #3498db; border-radius: 10px; font-size: 50px; color: #fff; font-family: regularcom; padding: 20px;" onclick="makeAjaxRequest2()">Join</div>
+                    </div>
+                    
+                </div>
+            <br>
+            <br>
+            <div id="abcd" style="width: 100%;"></div>
+        </div>
+        <div style="width: 100px; height: 100px; margin-top: -50px; border-radius: 50%; background-color: #3498db; position: absolute; margin-left: 3%; font-size: 100px; color: #fff;" onclick="toggleVisibility2()">+</div>
+
+        
+        
+        
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="navbar">
+        <button onclick="home()" style="margin-left: 50px"><img src="static/home_w.png" width="80px" height="80px" /> </button>
+        <button onclick="location.replace('/faculty-class');"><img src="static/progress_w.png" width="80px" height="80px" style="opacity: 0.5;"/> </button>
+        <button onclick="location.replace('/print');"><img src="static/notice_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+        <button onclick="profile()" style="margin-right: 50px"><img src="static/profile_w.png" width="80px" height="80px" style="opacity: 0.5;"/></button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        function home() {
+            location.replace("/");
+        }
+        function profile() {
+            location.replace("/profile");
+        }
+        
+        function toggleVisibility() {
+            var div = document.getElementById('new_class');
+
+            // Toggle the visibility
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+            }
+        }
+        function toggleVisibility2() {
+            var div = document.getElementById('new_practical');
+
+            // Toggle the visibility
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+            }
+        }
+        
+        // JavaScript code to prevent zooming
+        document.addEventListener('touchstart', function(event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        }, { passive: false });
+
+        function att() {
+            location.replace("/att");
+        }
+
+        function makeAjaxRequest() {
+            // Get values from input fields
+           
+            var subject = document.getElementById('n_subject').value;
+
+            // Create a data object to send in the AJAX request
+            var data = {
+                
+                subject: subject
+            };
+
+            // Make an AJAX request using the Fetch API
+            fetch('/add_subject', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Assuming the server returns JSON
+                } else {
+                    throw new Error('Request failed');
+                }
+            })
+            .then(data => {
+                var div = document.getElementById('new_class');
+                div.style.display = 'none';
+                // alert("Class Joinde");
+                location.reload();
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', data);
+                alert("Error in Joining Class. Please check class-code.");
+            });
+        }
+
+
+        function makeAjaxRequest2() {
+            // Get values from input fields
+           
+            var subject = document.getElementById('n_practical').value;
+
+            // Create a data object to send in the AJAX request
+            var data = {
+                
+                subject: subject
+            };
+
+            // Make an AJAX request using the Fetch API
+            fetch('/add_batch', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Assuming the server returns JSON
+                } else {
+                    throw new Error('Request failed');
+                }
+            })
+            .then(data => {
+                var div = document.getElementById('new_class');
+                div.style.display = 'none';
+                // alert("Class Joinde");
+                location.reload();
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', data);
+                alert("Error in joining practical batch. Please check the practical-code.");
+            });
+        }
+
+        function createDiv(name, cc) {
+            // Create the new div element
+            var newDiv = document.createElement("div");
+            var newDiv0 = document.createElement("div");
+            var newDiv1 = document.createElement("div");
+            var brk = document.createElement("br");
+            // Set the attributes and styles for the new div
+            newDiv0.onclick = function() {
+                att(cc);
+            };
+            newDiv.style.width = "90%";
+            newDiv.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            newDiv.style.display = "flex";
+            newDiv.style.fontSize = "50px";
+            newDiv.style.fontFamily = "mediumcom";
+            newDiv.style.padding = "30px";
+            // newDiv.innerText = name; // Set the text content
+
+            newDiv0.style.width = "90%";
+            newDiv0.style.textAlign = 'left';
+            newDiv0.innerText = name;
+
+            newDiv1.style.width = "10%";
+            newDiv1.style.textAlign = 'right';
+            newDiv1.style.fontSize = '40px';
+            newDiv1.style.opacity = "0.3"
+            newDiv1.innerText = "ⓘ";
+            newDiv1.onclick = function() {
+                // alert(name);
+                class_info(cc);
+            };
+
+            newDiv.appendChild(newDiv0);
+            newDiv.appendChild(newDiv1);
+
+            // Get the element with id "abc"
+            var parentDiv = document.getElementById("abc");
+
+            // Append the new div to the parent div
+            parentDiv.appendChild(newDiv);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+
+
+            
+
+        }
+
+        // Example function for the onclick event with parameters
+        function att(param1) {
+            window.location.href = "/att/"+param1;
+            // location.replace("/att/"+param1);
+        }
+        function fet(param1) {
+            alert("Generating report. Please wait.")
+            const url = `/report/${param1}`;  // Replace with your server address
+
+            fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const a = document.createElement('a');
+                const url = window.URL.createObjectURL(blob);
+                a.href = url;
+                a.download = 'downloaded_file.png';  // Change the file name accordingly
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            
+        }
+        const array2 = {{ CLASSCODE | tojson | safe }};
+        const array1 = {{ NAME | tojson | safe }};
+
+        function printMatchingElements(array1, array2) {
+            // Check if both arrays have the same length
+            if (array1.length !== array2.length) {
+                console.error('Arrays must have the same length');
+                return;
+            }
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                console.log(`Index ${i}: ${array1[i]} - ${array2[i]}`);
+                createDiv(array2[i], array1[i], i);
+
+            }
+        }
+        printMatchingElements(array1, array2);
+
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll > 100) {
+                    $('#div1').css('opacity', '0');
+                    $('#div2').css('opacity', '1');
+                    $('#y_cls').css('color', '#05263d');
+                } else {
+                    $('#div1').css('opacity', '1');
+                    $('#div2').css('opacity', '0');
+                    $('#y_cls').css('color', '#d7eeff');
+                }
+            });
+        });
+
+
+        function createDiv_p(name, cc) {
+            // Create the new div element
+            var newDiv = document.createElement("div");
+            var newDiv0 = document.createElement("div");
+            var newDiv1 = document.createElement("div");
+            var brk = document.createElement("br");
+            // Set the attributes and styles for the new div
+            newDiv0.onclick = function() {
+                att_p(cc);
+            };
+            newDiv.style.width = "90%";
+            newDiv.style.boxShadow = "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)";
+            newDiv.style.display = "flex";
+            newDiv.style.fontSize = "50px";
+            newDiv.style.fontFamily = "mediumcom";
+            newDiv.style.padding = "30px";
+            // newDiv.innerText = name; // Set the text content
+
+            // Get the element with id "abc"
+            var parentDiv = document.getElementById("abcd");
+            
+            newDiv0.style.width = "90%";
+            newDiv0.style.textAlign = 'left';
+            newDiv0.innerText = name;
+
+            newDiv1.style.width = "10%";
+            newDiv1.style.textAlign = 'right';
+            newDiv1.style.fontSize = '40px';
+            newDiv1.style.opacity = "0.3"
+            newDiv1.innerText = "ⓘ";
+            newDiv1.onclick = function() {
+                // alert(name);
+                class_info(cc);
+            };
+
+            newDiv.appendChild(newDiv0);
+            newDiv.appendChild(newDiv1);
+
+            // Append the new div to the parent div
+            parentDiv.appendChild(newDiv);
+            parentDiv.appendChild(brk);
+            parentDiv.appendChild(brk);
+
+        }
+        
+        // Example function for the onclick event with parameters
+        
+        function att_p(param1) {
+            window.location.href = "/att-s/"+param1;
+            // location.replace("/att-s/"+param1);
+        }
+        function class_info(param1) {
+            console.log(param1);
+            window.location.href = "/info/"+param1;
+            // window.location.href = "/info/"+pram1;
+        }
+
+        const array4 = {{ PRACODE | tojson | safe }};
+        const array3 = {{ PRANAME | tojson | safe }};
+        console.log(array3, array4);
+
+        function printMatchingElements_p(array1, array2) {
+            // Check if both arrays have the same length
+            if (array1.length !== array2.length) {
+                console.error('Arrays must have the same length');
+                return;
+            }
+
+            // Iterate over the arrays and print elements with the same index
+            for (let i = 0; i < array1.length; i++) {
+                console.log(`Index ${i}: ${array1[i]} - ${array2[i]}`);
+                createDiv_p(array2[i], array1[i]);
+
+            }
+        }
+        printMatchingElements_p(array3, array4);
+        
+      </script>
+</body>
+</html>
